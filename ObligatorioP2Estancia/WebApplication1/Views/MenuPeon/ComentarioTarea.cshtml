@@ -1,0 +1,41 @@
+﻿@using Dominio;
+
+<h1>Tarea:</h1><br />
+    <table class="table table-border">
+        <thead>
+            <tr>
+            <th>ID</th>
+            <th>Descripcion</th>
+            <th>Fecha de Inicio</th>
+            <th>Completa</th>
+            <th>Comentario</th>
+            </tr>
+        </thead>
+       <tbody>
+         <td>@ViewBag.tarea</td>
+         <td>@ViewBag.descripcion</td>
+         <td>@ViewBag.fechaIni</td>
+         <td>
+            @if (ViewBag.completa != null)
+            {
+                <text>@ViewBag.completa</text>
+            }
+            else
+            {
+                <text>@ViewBag.completa</text>
+            }
+         </td>
+    <td>
+       
+        <form method="post">
+            <div class="form-group">
+                <input type="hidden" name="tareaId" value="@ViewBag.tarea" />
+                <textarea class="form-control" id="comentario" name="comentario" placeholder="Escribe tu comentario aquí..." required></textarea>
+            </div> <br />
+            <button type="submit" class="btn btn-info float-left">Agregar Comentario</button>
+            <div class="clearfix"></div>
+        </form>
+    </table>
+    </td>
+       </tbody>
+

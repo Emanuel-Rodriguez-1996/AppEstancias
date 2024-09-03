@@ -1,0 +1,61 @@
+﻿@using Dominio;
+@if (ViewBag.error != null)
+{
+    <div class="alert-warning">
+        <p>@ViewBag.error</p>
+    </div>
+}
+
+@if (ViewBag.nombre != null)
+{
+    <div class="alert-info">
+        <h1>Persona Logueada: @ViewBag.nombre</h1><br />
+        <h3>Rol: @ViewBag.rol</h3>
+    </div>
+}
+<div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    Rol
+                </th>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Contraseña
+                </th>
+                <th>
+                    Residente
+                </th>
+                <th>
+                    Fecha de Ingreso
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@ViewBag.rol</td>
+                <td>@ViewBag.nombre</td>
+                <td>@ViewBag.email</td>
+                <td>@ViewBag.contraseña</td>
+                <td>
+                    @if (ViewBag.residente != null)
+                    {
+                        <text>@ViewBag.residente</text>
+                    }
+                    else
+                    {
+                        <text>@ViewBag.residente</text>
+                    }
+                </td>
+                <td>@ViewBag.fechIng</td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>

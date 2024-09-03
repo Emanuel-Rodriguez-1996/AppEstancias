@@ -1,0 +1,27 @@
+﻿@using Dominio;
+<h1>Asignar Tarea:</h1>
+@if (ViewBag.mensaje != null)
+{
+    <div class="alert-info">
+        <p>@ViewBag.mensaje</p>
+    </div>
+}
+<form method="post">
+    <div class="form-group">
+        
+        <input type="hidden" name="email" value="@ViewBag.email" />
+        <textarea class="form-control" name="descripcion" placeholder="Escribe una descripción de la tarea aquí..." required></textarea><br />
+        <label type="text"/>fecha de inicio
+        <input type="date" name="fechaInicio"/>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-info float-left">Agregar Tarea</button>
+</form>
+<div class="clearfix"></div>
+
+@if (ViewBag.error != null)
+{
+    <div class="alert-alert">
+        <p>@ViewBag.error</p>
+    </div>
+}

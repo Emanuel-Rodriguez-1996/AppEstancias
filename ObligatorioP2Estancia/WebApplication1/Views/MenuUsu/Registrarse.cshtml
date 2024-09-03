@@ -1,0 +1,25 @@
+﻿@using Dominio;
+
+    @if (ViewBag.error != null)
+    {
+        <div class="card-body alert alert-danger">
+            @ViewBag.error
+        </div>
+    }
+    @if (ViewBag.mensaje != null)
+    {
+        <div class="card-body alert alert-info">
+            @ViewBag.mensaje
+        </div>
+    }
+        <form method="post">
+                <input type="text" name="Email" placeholder="Ingrese Email." /> <br />
+                <input type="password" name="Contraseña" placeholder="Ingrese Contraseña." /> <br />
+                <input type="text" name="Nombre" placeholder="Ingrese Nombre." /> <br />
+                <label>Seleccione Residencia</label> <br />
+                <select name="Residente">
+                    <option value="true">Si</option>
+                    <option value="false">No</option>
+                </select> <br />
+            <button type="submit" class="btn btn-primary">Agregar</button>
+        </form>

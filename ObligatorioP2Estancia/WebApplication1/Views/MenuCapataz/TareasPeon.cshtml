@@ -1,0 +1,47 @@
+﻿@using Dominio;
+
+
+    <table class="table table-border">
+        <thead>
+            <tr>
+                <th>Descripcion</th>
+                <th>Fecha de Inicio</th>
+                <th>Estado</th>
+                <th>
+                    <form method="post">
+                        <input type="hidden" name="email" value="@ViewBag.email" />
+                        <input type="hidden" name="contraseña" value="@ViewBag.contraseña" />
+                        <button type="submit" class="btn btn-outline-primary">Asignar Tarea</button>
+                    </form>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Tarea unT in ViewBag.tareas)
+            {
+                <tr>
+                    <td>@unT.Descripcion</td>
+                    <td>@unT.FechaInicio.ToString("yyyy-MM-dd")</td>
+                    <td>
+                        @if (unT.Completa)
+                        {
+                            <text>Completa</text>
+                        }
+                        else
+                        {
+                            <text>Incompleta</text>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+    @if (ViewBag.error != null)
+    {
+        <div class="alert-warning">
+            <p>@ViewBag.error</p>
+        </div>
+    }
+

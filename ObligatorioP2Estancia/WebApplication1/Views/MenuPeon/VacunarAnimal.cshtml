@@ -1,0 +1,50 @@
+﻿@using Dominio;
+
+<form method="post">
+    @if (ViewBag.error != null)
+    {
+        <div class="alert-warning">@ViewBag.error</div>
+    }
+    else
+    {
+        @if (ViewBag.mensaje != null)
+        {
+            <div class="alert-info">
+                <p>@ViewBag.mensaje</p>
+            </div>
+        }
+    }
+
+    <table class="table table-border">
+        <thead>
+            <tr>
+                <th>Codigo</th>
+                <th>Raza</th>
+                <th>Vacuna</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Animal unA in ViewBag.animales)
+            {
+                <tr>
+                    <td>@unA.Codigo</td>
+                    <td>@unA.Raza</td>
+                    <td>
+                        <form method="post">
+                            <select name="nombreVacuna">
+                                <option disabled selected>Seleccionar Vacuna</option>
+                                @foreach (Vacuna vacuna in ViewBag.vacunas)
+                                {
+                                    <option value="@vacuna.Nombre">@vacuna.Nombre</option>
+                                }
+                            </select>
+                            <input type="hidden" name="codAnimal" value="@unA.Codigo" />
+                            <button type="submit" class="btn btn-success">Vacunar</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>

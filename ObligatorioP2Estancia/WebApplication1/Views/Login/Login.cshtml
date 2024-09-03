@@ -1,0 +1,21 @@
+﻿@using Dominio
+@if (ViewBag.nombre != null)
+{
+    <div class="alert-info">Persona Logueada: @ViewBag.nombre</div>
+}
+
+    <form method="post">
+        
+            <input type="text" name="email" placeholder="Ingrese Email" /> <br />
+            <input type="password" name="password" placeholder="Ingrese Contraseña" /> <br />
+            <button type="submit" class="btn btn-primary">Ingresar</button>
+       
+    </form>
+
+
+    @if (ViewBag.mensaje != null)
+    {
+        <div class="alert-danger">
+            <p>@ViewBag.mensaje</p>
+        </div>
+    }

@@ -1,0 +1,30 @@
+﻿@using Dominio;
+<h1>Registrar Bovino</h1> <br />
+@if (ViewBag.error != null)
+{
+    <div class="alert-warning">@ViewBag.error</div>
+}
+@if (ViewBag.mensaje != null)
+{
+    <div class="alert-info">@ViewBag.mensaje</div>
+}
+<form method="post">
+    <input type="text" name="codigo" placeholder="Ingrese Codigo." /> <br /> 
+    <label>Elegir Genero</label>
+    <select name="genero">
+        <option value="macho">Macho</option>
+        <option value="hembra">Hembra</option>
+    </select><br />
+    <input type="text" name="raza" placeholder="Ingrese Raza." /> <br /> 
+    <input type="date" name="fechaNac" placeholder="Ingrese Fecha Nacimiento." /> <br />
+    <input type="text" name="precioCompra" placeholder="Precio de Compra." /> <br />
+    <input type="text" name="costoAlim" placeholder="Ingrese Costo Alimentario." /> <br /> 
+    <input type="text" name="peso" placeholder="Ingrese Peso." /> <br />
+    <label>Hibrido</label>
+    <select name="hibrido">
+        <option value="si">Si</option>
+        <option value="no">No</option>
+    </select><br />
+    <br />
+    <button type="submit" class="btn btn-primary">Agregar</button>
+</form>

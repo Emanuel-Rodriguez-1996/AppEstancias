@@ -1,0 +1,40 @@
+﻿@using Dominio;
+<div class="card">
+    @if (ViewBag.error != null)
+    {
+        <div class="card-body alert alert-warning">
+            <p>@ViewBag.error</p>
+        </div>
+    }
+
+    @if (ViewBag.nombre != null)
+    {
+        <div class="card-body alert alert-info">
+            <h1 class="card-title">Persona Logueada: @ViewBag.nombre</h1>
+            <h3>Rol: @ViewBag.rol</h3>
+        </div>
+    }
+
+    <div class="card-body">
+        <h1 class="card-title">Lista de Peones</h1>
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Peon unP in ViewBag.peones)
+                    {
+                        <tr>
+                            <td>@unP.Nombre</td>
+                            <td>@unP.Email</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

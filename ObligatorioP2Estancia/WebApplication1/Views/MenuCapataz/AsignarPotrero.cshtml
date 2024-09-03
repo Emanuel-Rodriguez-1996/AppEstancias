@@ -1,0 +1,46 @@
+﻿@using Dominio;
+
+@if (ViewBag.error != null)
+{
+    <div class="alert-warning">@ViewBag.error</div>
+}
+else
+{
+    @if (ViewBag.mensaje != null)
+    {
+        <div class="alert-info">
+            <p>@ViewBag.mensaje</p>
+        </div>
+    }
+}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Codigo</th>
+            <th>Raza</th>
+            <th>Potrero</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Animal unA in ViewBag.animalLibre)
+        {
+            <tr>
+                <td>@unA.Codigo</td>
+                <td>@unA.Raza</td>
+                <td>
+                    <form method="post">
+                        <select name="potrero">
+                            <option disabled selected>Seleccionar Potrero</option>
+                            @foreach (Potrero unP in ViewBag.listPotreros)
+                            {
+                                <option value="@unP.Id">@unP.Descripcion</option>
+                            }
+                        </select>
+                        <input type="hidden" name="codAnimal" value="@unA.Codigo" />
+                        <button class="btn btn-success" type="submit">Asignar Animal</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

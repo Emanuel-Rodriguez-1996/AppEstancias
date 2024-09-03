@@ -1,0 +1,37 @@
+﻿@using Dominio;
+@if (ViewBag.potreros != null && ViewBag.potreros.Count > 0)
+{
+    <table class="table table-border">
+        <thead>
+            <tr>
+                <th>Identificador</th>
+                <th>Descripcion</th>
+                <th>Animales</th>
+                <th>Capacidad Maxima</th>
+                <th>Precio Venta</th>
+            </tr>
+        </thead>
+<tbody>
+    @foreach (Potrero unP in ViewBag.potreros)
+    {
+        <tr>
+            <td>@unP.Id</td>
+            <td>@unP.Descripcion</td>
+            <td>@unP.ContarAnimales()</td>
+            <td>@unP.CapMax</td>
+            <td>@unP.Ganancias()</td>
+
+        </tr>
+    }
+</tbody>
+    </table>
+}
+else
+{
+    @if (ViewBag.error != null)
+    {
+        <div class="alert-warning">
+            <p>@ViewBag.error</p>
+        </div>
+    }
+}

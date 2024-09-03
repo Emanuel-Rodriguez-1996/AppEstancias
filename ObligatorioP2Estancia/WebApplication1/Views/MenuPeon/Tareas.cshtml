@@ -1,0 +1,54 @@
+﻿@using Dominio;
+
+@if (ViewBag.mensaje != null)
+{
+    <div class="card-body alert alert-info">
+        @ViewBag.mensaje
+    </div>
+}
+
+@if (ViewBag.listTareas?.Count > 1)
+{
+    <table class="table table-border">
+        <thead>
+            <tr>
+                <th>Descripcion</th>
+                <th>Fecha de Inicio</th>
+                <th>Estado</th>
+                <th>Completar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <form method="post">
+                @foreach (Tarea unT in ViewBag.listTareas)
+                {
+                <tr>
+                    <td>@unT.Descripcion</td>
+                    <td>@unT.FechaInicio.ToString("yyyy-MM-dd")</td>
+                    <td>
+                            @if (unT.Completa)
+                            {
+                                <text>Completa</text>
+                            }
+                            else
+                            {
+                                <text>Incompleta</text>
+                            }
+                    </td>
+                    <td><button name="tareaId" value="@unT.Id" class="btn btn-info">Completar Tarea</button></td>
+                </tr>
+                }
+            </form>
+        </tbody>
+    </table>
+}
+else
+{
+    @if (ViewBag.error != null)
+    {
+        <div class="alert-warning">
+            <p>@ViewBag.error</p>
+        </div>
+    }
+    
+}

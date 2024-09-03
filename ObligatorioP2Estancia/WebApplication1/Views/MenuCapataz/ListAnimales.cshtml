@@ -1,0 +1,67 @@
+﻿@using Dominio;
+@{
+    ViewData["Title"] = "Lista de Animales";
+}
+
+@if (ViewBag.error != null)
+{
+    <div class="alert-warning">@ViewBag.error</div>
+}
+else
+{
+    @if (ViewBag.mensaje != null)
+    {
+        <div class="alert-info">
+            <p>@ViewBag.mensaje</p>
+        </div>
+    }
+}
+
+<form method="post">
+    <input type="text" name="peso" value="" placeholder="Ingreso Peso" /> <br /> <br />
+    <select name="tipo">
+        <option value="bovino">Bovino</option>
+        <option value="ovino">Ovino</option>
+    </select> <br /> <br />
+    <button class="btn btn-primary" type="submit">Buscar</button>
+</form>
+
+@if (ViewBag.animales != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Codigo</th>
+                <th>Tipo</th>
+                <th>Peso</th>
+                <th>Sexo</th>
+                <th>Ganancia de Venta</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Animal animal in ViewBag.animales)
+            {
+                <tr>
+                    <td>@animal.Codigo</td>
+                    <td>@(animal.GetType() == typeof(Ovino) ? "Ovino" : "Bovino")</td>
+                    <td>@animal.Peso</td>
+                    <td>@animal.Genero</td>
+                    <td>
+                        @if (animal.GetType() == typeof(Ovino))
+                        {
+                            Animal ovino = (Ovino)animal;
+                            @ovino.PrecioVenta().ToString()
+                        }
+                        else if (animal.GetType() == typeof(Bovino))
+                        {
+                            Animal bovino = (Bovino)animal;
+                            @bovino.PrecioVenta().ToString()
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+

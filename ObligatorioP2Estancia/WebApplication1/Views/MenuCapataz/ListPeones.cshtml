@@ -1,0 +1,53 @@
+﻿@using Dominio;
+@if (ViewBag.error != null)
+{
+    <div class="alert-warning">@ViewBag.error</div>
+}
+else
+{
+    @if (ViewBag.mensaje != null)
+    {
+        <div class="alert-info">
+            <p>@ViewBag.mensaje</p>
+        </div>
+    }
+}
+<table class="table table-border">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Contraseña</th>
+            <th>FechaIngreso</th>
+            <th>Residente</th>
+            <th>Tareas</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (ViewBag.peones != null)
+        {
+            @foreach (Peon unP in ViewBag.peones)
+            {
+                <tr>
+                    <td>@unP.Nombre</td>
+                    <td>@unP.Email</td>
+                    <td>@unP.Contraseña</td>
+                    <td>@unP.FechaIngreso.ToString("yyy-MM-ddd")</td>
+                    <td>@(unP.Residente ? "Si" : "No")</td>
+                    <td>
+                        <form method="post">
+                            <input type="hidden" name="email" value="@unP.Email" />
+                            <button type="submit" class="btn btn-outline-primary">Ver Tareas</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6">No hay peones disponibles</td>
+            </tr>
+        }
+    </tbody>
+</table>

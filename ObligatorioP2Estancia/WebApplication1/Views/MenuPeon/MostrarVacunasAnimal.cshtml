@@ -1,0 +1,21 @@
+﻿@using Dominio;
+@if (ViewBag.mensaje != null)
+{
+    <div class="alert-info">
+        <p>@ViewBag.mensaje</p>
+    </div>
+}
+<h2>Vacunas del animal con código   <p class="alert-info"> @ViewBag.codigoAnimal</h2></p>
+@if (ViewBag.cantidadVacunasDelAnimal != null)
+{
+    <ul>
+        @foreach (AdministracionVacuna unaVacuna in ViewBag.cantidadVacunasDelAnimal)
+        {
+            <li>@unaVacuna.Vacuna.Nombre - Fecha Administrada: @unaVacuna.FechaAdm</li>
+        }
+    </ul>
+}
+else
+{
+    <p>No hay vacunas registradas para este animal.</p>
+}
